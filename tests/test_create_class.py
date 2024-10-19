@@ -11,9 +11,10 @@ def test_category_init(product, category) -> None:
 
     assert category.name == "Телефоны детства"
     assert category.description == "Вспомнить как было классно"
+    assert category.add_product(product) == None
 
     assert category.category_count == 1
-    assert category.product_count == 4
+    assert category.product_count == 5
 
 
 def test_category_property(category_test):
