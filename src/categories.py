@@ -24,7 +24,8 @@ class Category:
         product_count = 0
         for product in self.__products:
             product_count += product.quantity
-        return f"{self.name}, количество продуктов: {self.product_count} шт."
+            print(product_count)
+        return f"{self.name}, количество продуктов: {product_count} шт."
 
     def add_product(self, product):
         """Метод добавляет продукт к списку продуктов в категории"""

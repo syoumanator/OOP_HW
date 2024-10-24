@@ -22,16 +22,13 @@ class Product:
         return (self.price * self.quantity) + (other.price * other.quantity)
 
     @classmethod
-    def new_product(cls, dict_product: dict, products=None):
-        if products:
-            for product in products:
-                if product.name == dict_product["name"]:
-                    product.quantity += dict_product["quantity"]
-                    product.price = max([product.price, product["price"]])
-        return cls(**dict_product)
+    def new_product(cls, product):
+        """Метод добавляет новый продукт"""
+        return cls(**product)
 
     @property
     def price(self):
+        """Метод возвращает цену продукта"""
         return self.__price
 
     @price.setter
