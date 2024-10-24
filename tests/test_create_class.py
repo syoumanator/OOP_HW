@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
-from src.create_class import Product
+from src.categories import Category
+from src.product import Product
 
 
 def test_category_init(product, category) -> None:
