@@ -1,9 +1,19 @@
+import pytest
+
+
 def test_category_init(product, category) -> None:
     assert category.name == "Телефоны детства"
     assert category.description == "Вспомнить как было классно"
     category.add_product(product)
     assert category.category_count == 1
     assert category.product_count == 5
+    with pytest.raises(TypeError):
+        assert product + "wrong"
+
+
+def test_add_product_error(category):
+    with pytest.raises(TypeError):
+        category.add_product("product")
 
 
 def test_category_property(category_test):

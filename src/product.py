@@ -19,12 +19,21 @@ class Product:
 
     def __add__(self, other):
         """Магический метод возвращает сумму цен двух товаров"""
-        return (self.price * self.quantity) + (other.price * other.quantity)
+        if type(other) is self.__class__:
+            return (self.price * self.quantity) + (other.price * other.quantity)
+        else:
+            raise TypeError
 
     @classmethod
-    def new_product(cls, product):
+    def new_product(cls, dict_product: dict, products=None):
         """Метод добавляет новый продукт"""
-        return cls(**product)
+        if products:
+            for product in products:
+                if product.name == dict_product["name"]:
+                    product.quantity += dict_product["quantity"]
+                    product.price = max([product.price, dict_product["price"]])
+                    return product
+        return cls(**dict_product)
 
     @property
     def price(self):
