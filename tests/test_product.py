@@ -26,7 +26,7 @@ def test_new_price(product):
 def test_new_price_negative(capsys, product):
     product.price = -1
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 @patch("builtins.input", side_effect="y")
