@@ -35,6 +35,12 @@ class Category:
         else:
             raise TypeError
 
+    def avr_price(self):
+        try:
+            return sum([product.price for product in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
     @property
     def products(self) -> str:
         """Метод возвращает строку с названием продукта его стоимость и остаток"""
