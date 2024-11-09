@@ -68,6 +68,8 @@ def category_test1():
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
     category1 = Category("Смартфоны", "Категория смартфонов", [product1, product2, product3])
     return category1
+
+
 @pytest.fixture
 def empty_category():
     return Category("Пустая категория", "Категория без продуктов", [])
