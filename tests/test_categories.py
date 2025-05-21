@@ -1,0 +1,31 @@
+import pytest
+
+
+def test_category_init(product, category) -> None:
+    assert category.name == "Телефоны детства"
+    assert category.description == "Вспомнить как было классно"
+    category.add_product(product)
+    assert category.category_count == 1
+    assert category.product_count == 5
+    with pytest.raises(TypeError):
+        assert product + "wrong"
+
+
+def test_add_product_error(category):
+    with pytest.raises(TypeError):
+        category.add_product("product")
+
+
+def test_category_property(category_test):
+    assert category_test.products == (
+        "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.\n" "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+    )
+
+
+def test_category_str(category_test):
+    assert str(category_test) == "Смартфоны, количество продуктов: 13 шт."
+
+
+def test_middle_price(category_test1, empty_category):
+    assert category_test1.avr_price() == 140333.33333333334
+    assert empty_category.avr_price() == 0
